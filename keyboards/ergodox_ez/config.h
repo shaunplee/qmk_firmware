@@ -44,6 +44,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define TAPPING_TOGGLE  1
 
+#define QMK_KEYS_PER_SCAN 4
+
 /* define if matrix has ghost */
 //#define MATRIX_HAS_GHOST
 
@@ -150,5 +152,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_FUNCTION
 //#define DEBUG_MATRIX_SCAN_RATE
 
-#define QMK_KEYS_PER_SCAN 4
 #endif
