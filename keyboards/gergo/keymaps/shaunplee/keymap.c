@@ -32,10 +32,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | LShift |   Z  |   X  |   C  |   V  |   B  | Esc  |           | Del  |   N  |   M  | ,  < | . >  | /  ? |\ / RSft|
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *                    .----------.   .---------.                                 .-----------.   .-----.
- *                    | Gui      |   |SYMB/Menu|                                 | SYMB      |   |Ctrl |
+ *                    | Gui      |   |SYMB     |                                 | SYMB      |   |Ctrl |
  *                    '----------'   '---------'                                 `-----------.   '-----'
  *                                        ,-------.                      ,-------.
- *                                        |GuiCtrl|                      |NUMPAD |
+ *                                        | Menu  |                      |NUMPAD |
  *                                 ,------|-------|                      |-------|------.
  *                                 | NUMB | Alt   |                      | Bksp  | NUMB |
  *                                 | Space|       |                      |       |Enter |
@@ -45,8 +45,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT_gergo(
     LT(NUMPAD, KC_TAB),     KC_Q,  KC_W,   KC_E,   KC_R, KC_T,                                             KC_Y,    KC_U, KC_I, KC_O,   KC_P,    KC_LBRC,
     KC_LCTL,                KC_A,  KC_S,   KC_D,   KC_F, KC_G, MO(MOUSE),                        KC_INS,   KC_H,    KC_J, KC_K, KC_L,   KC_SCLN, RCTL_T(KC_QUOT),
-    KC_LSFT,                KC_Z,  KC_X,   KC_C,   KC_V, KC_B, KC_ESC, LGUI(KC_LCTL),  TG(NUMPAD), KC_DEL,   KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, RSFT_T(KC_PIPE),
-                           KC_LGUI, LT(SYMB, KC_APP), LT(NUMB, KC_SPC), KC_LALT,     KC_BSPC,    LT(NUMB, KC_ENT), MO(SYMB), KC_RCTL
+    KC_LSFT,                KC_Z,  KC_X,   KC_C,   KC_V, KC_B, KC_ESC, KC_MENU,      TG(NUMPAD), KC_DEL,   KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, RSFT_T(KC_PIPE),
+                           KC_LGUI, MO(SYMB), LT(NUMB, KC_SPC), KC_LALT,               KC_BSPC,    LT(NUMB, KC_ENT), MO(SYMB), KC_RCTL
     ),
 /* Keymap 1: Symbols layer
  *
