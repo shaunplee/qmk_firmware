@@ -10,10 +10,11 @@
 #include QMK_KEYBOARD_H
 
 #define BASE 0 // default layer
-#define SYMB 1 // symbols
-#define NUMB 2 // numbers/motion
-#define NUMPAD 3 // number pad
-#define MOUSE 4 // mouse layer
+#define DVORAK 1 // dvorak base layer
+#define SYMB 2 // symbols
+#define NUMB 3 // numbers/motion
+#define NUMPAD 4 // number pad
+#define MOUSE 5 // mouse layer
 
 // Blank template at the bottom
 
@@ -49,7 +50,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LSFT,                KC_Z,  KC_X,   KC_C,   KC_V, KC_B, KC_ESC, KC_APP,       TG(NUMPAD), KC_DEL,   KC_N,    KC_M, KC_COMM, KC_DOT, KC_SLSH, RSFT_T(KC_PIPE),
                            KC_LGUI, MO(SYMB), LT(NUMB, KC_SPC), KC_LALT,               KC_BSPC,    LT(NUMB, KC_ENT), MO(SYMB), KC_RCTL
     ),
-/* Keymap 1: Symbols layer
+/* Keymap 1: Dvorak layer
+ *
+ * ,-------------------------------------------.                         ,-------------------------------------------.
+ * |NMPD/Tab|   Q  |   W  |   E  |   R  |   T  |                         |   Y  |   U  |   I  |   O  |   P  |  [     |
+ * |--------+------+------+------+------+------|------.           .------|------+------+------+------+------+--------|
+ * | Ctrl   |   A  |   S  |  D   |   F  |   G  | MOUSE|           | Ins  |   H  |   J  |   K  |   L  | ;  : | '/RCtL |
+ * |--------+------+------+------+------+------|------|           |------|------+------+------+------+------+--------|
+ * | LShift |   Z  |   X  |   C  |   V  |   B  | Esc  |           | Del  |   N  |   M  | ,  < | . >  | /  ? |\ / RSft|
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *                    .----------.   .---------.                                 .-----------.   .-----.
+ *                    | Gui      |   |SYMB     |                                 | SYMB      |   |Ctrl |
+ *                    '----------'   '---------'                                 `-----------.   '-----'
+ *                                        ,-------.                      ,-------.
+ *                                        | App   |                      |NUMPAD |
+ *                                 ,------|-------|                      |-------|------.
+ *                                 | NUMB | Alt   |                      | Bksp  | NUMB |
+ *                                 | Space|       |                      |       |Enter |
+ *                                 |      |       |                      |       |      |
+ *                                 `--------------'                      `--------------'
+ */
+[DVORAK] = LAYOUT_gergo(
+    LT(NUMPAD, KC_TAB), KC_QUOT,  KC_COMM,KC_DOT, KC_P, KC_Y,                                             KC_F,  KC_G, KC_C, KC_R, KC_L, KC_SLASH,
+    KC_LCTL,            KC_A,     KC_O,   KC_E,   KC_U, KC_I, MO(MOUSE),                        KC_INS,   KC_D,  KC_H, KC_T, KC_N, KC_S, RCTL_T(KC_MINUS),
+    KC_LSFT,            KC_SCOLON,KC_Q,   KC_J,   KC_K, KC_X, KC_ESC, KC_APP,       TG(NUMPAD), KC_DEL,   KC_B,  KC_M, KC_W, KC_V, KC_Z, RSFT_T(KC_PIPE),
+                        KC_LGUI, MO(SYMB), LT(NUMB, KC_SPC), KC_LALT,               KC_BSPC,    LT(NUMB, KC_ENT), MO(SYMB), KC_RCTL
+    ),
+/* Keymap 2: Symbols layer
  *
  * ,-------------------------------------------.                         ,-------------------------------------------.
  * |  ~     |  !   |  @   |  #   |  $   |  |   |                         |   ^  |  &   |  *   |  (   |   )  |  /     |
@@ -75,10 +102,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS, KC_LCBR, KC_RCBR, KC_UNDS, KC_PLUS, KC_GRV,  KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_NO,   KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_TRNS,
                                         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
-/* Keymap 2: Pad/Function layer
+/* Keymap 3: Pad/Function layer
  *
  * ,-------------------------------------------.                         ,-------------------------------------------.
- * | TRNNS  |   1  |  2   |  3   |  4   |  5   |                         |  6   |  7   |  8   |  9   |  0   |        |
+ * | TRNS   |   1  |  2   |  3   |  4   |  5   |                         |  6   |  7   |  8   |  9   |  0   |        |
  * |--------+------+------+------+------+------|------.           .------|------+------+------+------+------+--------|
  * | TRNS   |  F1  | F2   | F3   | F4   | F5   |TRNS  |           | F11  |      | LEFT | DOWN |  UP  | RIGHT| RCTL   |
  * |--------+------+------+------+------+------|------|           |------|------+------+------+------+------+--------|
@@ -102,7 +129,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS,  LCTL(KC_PGDN), LCTL(KC_PGUP)
     ),
 
-/* Keymap 3: Numpad layer
+/* Keymap 4: Numpad layer
  *
  * ,-------------------------------------------.                         ,-------------------------------------------.
  * |        | NLCK |  7   |  8   |  9   |  -   |                         | NLCK |  7   |  8   |  9   |  -   |    /   |
@@ -129,12 +156,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         KC_P0,   KC_PDOT, KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS, KC_P0,   KC_PDOT
                         ),
 
-/* Keymap 4: mouse layer
+/* Keymap 5: mouse layer
  *
  * ,-------------------------------------------.                         ,-------------------------------------------.
- * |        |      |      |      |      |      |                         |      |      | MUP  |      |      |        |
+ * | QWERTY |      |      |      |      |      |                         |      |      | MUP  |      |      |        |
  * |--------+------+------+------+------+------|------.           .------|------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      | MLT  | MDN  | MRT  |      |        |
+ * | DVORAK |      |      |      |      |      |      |           |      |      | MLT  | MDN  | MRT  |      |        |
  * |--------+------+------+------+------+------|------|           |------|------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -150,10 +177,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------'       `--------------'
 */
 [MOUSE] = LAYOUT_gergo(
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                             KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                           KC_TRNS, KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_ACL2,         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                        KC_TRNS, KC_TRNS, KC_ACL0, KC_ACL1,         KC_TRNS, KC_BTN1, KC_BTN2, KC_BTN3
+    DF(BASE),  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                             KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_TRNS, KC_TRNS,
+    DF(DVORAK),KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                           KC_TRNS, KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS, KC_TRNS,
+    KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_ACL2,         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                                          KC_TRNS, KC_TRNS, KC_ACL0, KC_ACL1,         KC_TRNS, KC_BTN1, KC_BTN2, KC_BTN3
                        )
 };
 
