@@ -9,3 +9,4 @@
 // #define SPLIT_USB_DETECT
 
 #define TAPPING_TERM 175
+#define EE_HANDS
