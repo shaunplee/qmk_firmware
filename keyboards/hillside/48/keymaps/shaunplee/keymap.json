@@ -50,7 +50,7 @@
          "KC_NO"       , "KC_LBRC"     , "KC_RBRC"      , "KC_MINS"      , "KC_EQL" , "KC_LPRN",
          "KC_RPRN"     , "KC_MINS"     , "KC_EQL"       , "KC_LBRC"      , "KC_RBRC", "KC_PIPE",
 
-         "KC_NO"       , "KC_LCBR"     , "KC_RCBR"      , "KC_UNDS"      , "KC_PLUS", "KC_GRV"         , "KC_TRNS",
+         "KC_TRNS"     , "KC_LCBR"     , "KC_RCBR"      , "KC_UNDS"      , "KC_PLUS", "KC_GRV"         , "KC_TRNS",
          "KC_TRNS"     , "KC_NO"       , "KC_UNDS"      , "KC_PLUS"      , "KC_LCBR", "KC_RCBR"        , "KC_BSLS",
 
          "KC_TRNS"     , "KC_TRNS"     , "KC_TRNS"      , "KC_TRNS"      , "KC_TRNS",
