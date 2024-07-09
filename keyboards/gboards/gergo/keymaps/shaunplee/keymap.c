@@ -8,6 +8,8 @@
  */
 
 #include QMK_KEYBOARD_H
+#include "keymap_dvorak.h"
+#include "sendstring_dvorak.h"
 
 #define BASE 0 // default layer
 #define DVORAK 1 // dvorak base layer
@@ -22,6 +24,49 @@ enum customKeycodes {
 	URL  = 1
 };
 
+
+bool caps_word_press_user(uint16_t keycode) {
+    switch (keycode) {
+        // Keycodes that continue Caps Word, with shift applied.
+        case DV_A:
+        case DV_B:
+        case DV_C:
+        case DV_D:
+        case DV_E:
+        case DV_F:
+        case DV_G:
+        case DV_H:
+        case DV_I:
+        case DV_J:
+        case DV_K:
+        case DV_L:
+        case DV_M:
+        case DV_N:
+        case DV_O:
+        case DV_P:
+        case DV_Q:
+        case DV_R:
+        case DV_S:
+        case DV_T:
+        case DV_U:
+        case DV_V:
+        case DV_W:
+        case DV_X:
+        case DV_Y:
+        case DV_Z:
+            add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
+            return true;
+
+        // Keycodes that continue Caps Word, without shifting.
+        case KC_1 ... KC_0:
+        case KC_BSPC:
+        case KC_DEL:
+            return true;
+
+        default:
+            return false;  // Deactivate Caps Word.
+    }
+}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
