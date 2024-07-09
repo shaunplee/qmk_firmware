@@ -9,6 +9,7 @@
 // #define SPLIT_USB_DETECT
 
 #define TAPPING_TERM 175
+#define DEBOUNCE 20
 #define EE_HANDS
 #define SPLIT_USB_DETECT
 #define SPLIT_USB_TIMEOUT 2000
